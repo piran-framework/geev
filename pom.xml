@@ -5,9 +5,9 @@
 		<modelVersion>4.0.0</modelVersion>
 
 		<groupId>com.behsa</groupId>
-		<artifactId>giv</artifactId>
+		<artifactId>geev</artifactId>
 		<version>0.1-SNAPSHOT</version>
-		<name>Giv</name>
+		<name>Geev</name>
 		<description>implementation of the BEHSA/RBND specification</description>
 		<organization>
 				<name>Behsa Co.</name>
@@ -37,6 +37,13 @@
 						<url>http://172.18.60.100/nexus/repository/maven-releases/</url>
 				</repository>
 		</distributionManagement>
+		<dependencies>
+				<dependency>
+						<groupId>org.zeromq</groupId>
+						<artifactId>jeromq</artifactId>
+						<version>0.4.1</version>
+				</dependency>
+		</dependencies>
 		<build>
 				<plugins>
 						<plugin>
