@@ -1,7 +1,12 @@
 # Giv
-Giv is a implementation of the Behsa Role-Based Node Discovery (BEHSA/RBND) version 1 
+Giv is an implementation of the Behsa Role-Based Node Discovery (BEHSA/RBND) version 1 
 specification. Giv is a simple library you can add to your application and use it to discover 
-other nodes and their roles.
+other nodes and their roles. To understand the protocol see [RBND-specification](RBND-Specification.md)
+
+## The Name
+Giv is a mythical hero of the Iranian historical and mythical epic book, Shahnaame. Who go abroad
+and search several years to find Key-khosrow the king of the Iran. He finally found the king and
+bring him and his mother back to Iran.
 
 ## License
 Copyright (c) 2018 Behsa Corporation.
