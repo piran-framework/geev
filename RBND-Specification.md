@@ -29,13 +29,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 document are to be interpreted as described in RFC 2119 (see "[Key words for use in RFCs to 
 Indicate Requirement Levels](http://tools.ietf.org/html/rfc2119)").
 
-##Goals
+## Goals
 RBND define a role-based discovery protocol, it's useful for a group of nodes with 
 different roles to find and connect each other. Every node MUST have a String formatted role and 
 other nodes can find that node address(ip address with port) and role without any pre-configuration.
 Nodes MAY join(connect) and leave(disconnect) arbitrary, also they MAY change their address.
 
-##Architecture
+## Architecture
 RBND uses UDP broadcast or multicast. Implementations of this specification SHOULD implement at 
 least one of them or MAY implement both of them and choose one of them based on the configuration.
 
