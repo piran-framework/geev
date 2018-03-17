@@ -45,27 +45,31 @@ implement it and notify the RBND library which node does not response anymore.
 RBND nodes use simple JOIN and LEAVE message to notify other nodes about the state of itself. 
 
 ## Message Header
-first 6 byte of any RBND message is its header, 5 of them representing "RBND1" the protocol name 
-and its version. sixth byte defines the message type and could be one of the values J for JOIN and R
-for JOIN Response and L for LEAVE.
+first 6 byte of any RBND message is its header, 4 of them representing "RBND" the protocol name, 
+one byte with value 0x1 represent protocol version which is in this specification 1. sixth byte 
+defines the message type and could be one of the values 0x1 for JOIN and 0x2 for JOIN Response 
+and 0x3 for LEAVE.
 
 ## JOIN
 When a node connect to the network it MUST send a broadcast or multicast JOIN message to other
-.JOIN message header is "RBND1J", and its follows by 2 byte representing node port and the rest 
-of the message is the Role string representation of the node who sends the message.
+.JOIN message header is 'R'-'B'-'N'-'D'-0x1-0x1, and its follows by 2 byte representing node 
+port and the rest of the message is the Role string representation of the node who sends the 
+message.
 
 when a node receive a JOIN message, it should store IP address of the sender as well as port and 
 role and then, it SHOULD broadcast or multicast a JOIN response message.
 
 ## JOIN Response
-JOIN response message is same as JOIN message except the header which should be "RBND1R".
+JOIN response message is same as JOIN message except the header which should be 
+'R'-'B'-'N'-'D'-0x1-0x2.
 
 when a node receive a JOIN response message it should store IP address of the sender as well as 
 port and role.
 
 ## LEAVE
 When a node wants to go off, it MAY send a broadcast or multicast LEAVE. LEAVE message header is 
-"RBND1L" which follows by 2 byte indicate the port node used to listen to.
+'R'-'B'-'N'-'D'-0x1-0x3 which follows by 2 byte indicate the port node used to listen to. After 
+these 8 byte header, role string comes. like other message types.
 
 If node exceptionally disconnect from the network or crash or for any other reason it can notify 
 others by LEAVE message, it's the responsibility of other nodes client to notify its RBND library

@@ -19,17 +19,18 @@
 
 package com.behsa.geev;
 
-import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.util.Objects;
 
 /**
  * @author Isa Hekmatizadeh
  */
 public class Node {
   private final String role;
-  private final Inet4Address ip;
+  private final InetAddress ip;
   private final int port;
 
-  public Node(String role, Inet4Address ip, int port) {
+  public Node(String role, InetAddress ip, int port) {
     this.role = role;
     this.ip = ip;
     this.port = port;
@@ -39,12 +40,26 @@ public class Node {
     return role;
   }
 
-  public Inet4Address getIp() {
+  public InetAddress getIp() {
     return ip;
   }
 
   public int getPort() {
     return port;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Node node = (Node) o;
+    return port == node.port &&
+            Objects.equals(ip, node.ip);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(ip, port);
   }
 
   @Override
