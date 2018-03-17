@@ -25,6 +25,9 @@ import java.net.SocketAddress;
 import java.util.function.Consumer;
 
 /**
+ * Geev configuration class which is immutable class needed in {@link Geev} constructor.
+ * Instances of this class should be created by {@link GeevConfig.Builder} builder class.
+ *
  * @author Isa Hekmatizadeh
  */
 public class GeevConfig {
@@ -49,34 +52,39 @@ public class GeevConfig {
       target = new InetSocketAddress(multicastAddress, discoveryPort);
   }
 
-  public Consumer<Node> getJoin() {
+  Consumer<Node> getJoin() {
     return join;
   }
 
-  public Consumer<Node> getLeave() {
+  Consumer<Node> getLeave() {
     return leave;
   }
 
-  public Node getMySelf() {
+  Node getMySelf() {
     return mySelf;
   }
 
-  public boolean isBroadcast() {
+  boolean isBroadcast() {
     return broadcast;
   }
 
-  public Inet4Address getMulticastAddress() {
+  Inet4Address getMulticastAddress() {
     return multicastAddress;
   }
 
-  public int getDiscoveryPort() {
+  int getDiscoveryPort() {
     return discoveryPort;
   }
 
-  public SocketAddress getTarget() {
+  SocketAddress getTarget() {
     return target;
   }
 
+  /**
+   * Builder class to instantiate {@link GeevConfig} instances. Clients should create an object
+   * of this class and after chain calling to setter method call build() method to access
+   * {@link GeevConfig} instance created.
+   */
   public static class Builder {
     private Consumer<Node> onJoin;
     private Consumer<Node> onLeave;
@@ -85,39 +93,78 @@ public class GeevConfig {
     private Inet4Address multicastAddress;
     private int discoveryPort = Geev.DEFAULT_DISCOVERY_PORT;
 
-
+    /**
+     * set a callback to call when a new node discovered
+     *
+     * @param onJoin the callback
+     * @return Builder object
+     */
     public Builder onJoin(Consumer<Node> onJoin) {
       this.onJoin = onJoin;
       return this;
     }
 
+    /**
+     * set a callback to call when a node announce it leave
+     *
+     * @param onLeave the callback
+     * @return Builder object
+     */
     public Builder onLeave(Consumer<Node> onLeave) {
       this.onLeave = onLeave;
       return this;
     }
 
+    /**
+     * set the node object of the client
+     *
+     * @param mySelf the node which represent the client
+     * @return Builder object
+     */
     public Builder setMySelf(Node mySelf) {
       this.mySelf = mySelf;
       return this;
     }
 
+    /**
+     * Indicate that geev should use broadcast strategy, the default strategy is broadcast
+     *
+     * @return Builder object
+     */
     public Builder useBroadcast() {
       this.broadcast = true;
       this.multicastAddress = null;
       return this;
     }
 
+    /**
+     * Indicate that geev should use multicast strategy and use the multicast address provided
+     *
+     * @param multicastAddress multicast address to use
+     * @return Builder object
+     */
     public Builder multicastAddress(Inet4Address multicastAddress) {
       this.multicastAddress = multicastAddress;
       this.broadcast = false;
       return this;
     }
 
+    /**
+     * Use discovery port other than the default 5172.
+     *
+     * @param discoveryPort port to use in UDP discovery
+     * @return Builder object
+     */
     public Builder discoveryPort(int discoveryPort) {
       this.discoveryPort = discoveryPort;
       return this;
     }
 
+    /**
+     * Build the actual {@link GeevConfig} object and return it
+     *
+     * @return {@link GeevConfig} object created
+     */
     public GeevConfig build() {
       return new GeevConfig(this);
     }

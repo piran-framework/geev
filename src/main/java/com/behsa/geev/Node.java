@@ -23,6 +23,9 @@ import java.net.InetAddress;
 import java.util.Objects;
 
 /**
+ * Immutable class represents nodes. Each node has a role name, an IP address and a port number.
+ * Equality of the nodes determined just by the IP address and port number.
+ *
  * @author Isa Hekmatizadeh
  */
 public class Node {
@@ -30,6 +33,13 @@ public class Node {
   private final InetAddress ip;
   private final int port;
 
+  /**
+   * Constructor of Node class
+   *
+   * @param role the role name of the node - case sensitive
+   * @param ip   IP address of the node
+   * @param port port number of the node
+   */
   public Node(String role, InetAddress ip, int port) {
     this.role = role;
     this.ip = ip;
