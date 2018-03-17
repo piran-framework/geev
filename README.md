@@ -4,9 +4,28 @@ specification. Geev is a simple library you can add to your application and use 
 other nodes and their roles. To understand the protocol see [RBND-specification](RBND-Specification.md)
 
 ## The Name
-Geev is a mythical hero of the Iranian historical and mythical epic book, Shahnaame. Who go abroad
-and search several years to find Kay-khosrow the king of the Iran. He finally found the king and
-bring him and his mother back to Iran.
+Geev is a mythical hero of the Iranian historical and mythical epic book, Shahnaame. Who went abroad
+and searched several years to find Kay-khosrow the king of the Iran. He finally found the king and
+brought him and his mother back to Iran.
+
+## Build
+You need jdk >= 1.8 and maven to build geev. simply use maven to build and install the artifact 
+into your local repository by the command:
+```
+mvn install
+```
+Then you can add geev into your project POM file like this:
+```
+<dependency>
+        <groupId>com.behsa</groupId>
+        <artifactId>geev</artifactId>
+        <version>0.1-SNAPSHOT</version>
+</dependency>
+```
+
+## Contribution
+Any contributions are welcomed. Also if you find any problem using geev you can create issue in 
+github issue tracker of the project.
 
 ## License
 Copyright (c) 2018 Behsa Corporation.
