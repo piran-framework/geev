@@ -31,6 +31,10 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * Starting point for discovery, every application using Geev should create a new instance of
+ * this class by the constructor and take care of this instance. This class create an internal
+ * thread to handle discovery stuff.
+ *
  * @author Isa Hekmatizadeh
  */
 public class Geev {
@@ -45,22 +49,52 @@ public class Geev {
   private Thread internalThread;
   private GeevInternal internalInstance;
 
+  /**
+   * Geev constructor which take a {@link GeevConfig} instance as a argument and create a Geev
+   * instance and an internal thread. it also broadcast join message to the network.
+   *
+   * @param config Geev configuration
+   * @throws IOException if it can't open a datagram socket or bind it.
+   */
   public Geev(GeevConfig config) throws IOException {
     internalInstance = new GeevInternal(config);
     internalThread = new Thread(internalInstance);
     internalThread.start();
   }
 
+  /**
+   * Access all nodes discovered
+   *
+   * @return all available nodes
+   */
   public List<Node> allNodes() {
     List<Node> nodes = new LinkedList<>();
     internalInstance.nodes.values().forEach(nodes::addAll);
     return nodes;
   }
 
+  /**
+   * return all nodes discovered with the role specified
+   *
+   * @param role role to filter node based on
+   * @return all nodes discovered with the role specified
+   */
+  public List<Node> allNodes(String role) {
+    return internalInstance.nodes.get(role);
+  }
+
+  /**
+   * Notify geev one node does not response and probably it's disconnected
+   *
+   * @param node the disconnected node
+   */
   public void nodeDisconnected(Node node) {
     internalInstance.disconnect(node);
   }
 
+  /**
+   * destroy the geev instance cleanly
+   */
   public void destroy() {
     try {
       internalInstance.send(LEAVE);
@@ -125,8 +159,6 @@ public class Geev {
     private void send(byte messageType) throws IOException {
       String myRole = config.getMySelf().getRole();
       int bufferSize = 8 + myRole.length();
-//      if (messageType != LEAVE)
-//        bufferSize += ;
       ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
       buffer.put(PROTOCOL_NAME); //protocol name 4 byte
       buffer.put(PROTOCOL_VERSION); //protocol version 1 byte
