@@ -214,6 +214,8 @@ public class Geev {
 
     private void handleJoinResponse(Node node) {
       List<Node> nodesWithSameRole = this.nodes.get(node.getRole());
+      if (config.getMySelf().equals(node)) //messages from itself should be ignored
+        return;
       if (nodesWithSameRole == null) {
         nodesWithSameRole = new ArrayList<>();
         nodesWithSameRole.add(node);
