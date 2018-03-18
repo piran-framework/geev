@@ -5,8 +5,6 @@ sudo: false
 jdk:
   - oraclejdk8
 
-script: "mvn cobertura:cobertura"
-
 os:
   - linux
 

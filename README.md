@@ -1,5 +1,6 @@
 # Geev
 [![Travis IC](https://travis-ci.org/behsa-oss/geev.svg?branch=master)](https://travis-ci.org/behsa-oss/geev)
+[![codecov](https://codecov.io/gh/behsa-oss/geev/branch/master/graph/badge.svg)](https://codecov.io/gh/behsa-oss/geev)
 
 Geev is an implementation of the Behsa Role-Based Node Discovery (BEHSA/RBND) version 1 
 specification. Geev is a simple library you can add to your application and use it to discover 
