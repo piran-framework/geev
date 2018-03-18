@@ -4,7 +4,7 @@
 				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<modelVersion>4.0.0</modelVersion>
 
-		<groupId>com.behsa</groupId>
+		<groupId>com.behsacorp</groupId>
 		<artifactId>geev</artifactId>
 		<version>0.1-SNAPSHOT</version>
 		<name>Geev</name>
@@ -31,6 +31,11 @@
 						</roles>
 				</developer>
 		</developers>
+		<scm>
+				<connection>scm:git:git://github.com/behsa-oss/geev.git</connection>
+				<developerConnection>scm:git:ssh://github.com:behsa-oss/geev.git</developerConnection>
+				<url>http://github.com/behsa-oss/geev/tree/master</url>
+		</scm>
 		<distributionManagement>
 				<repository>
 						<id>releases</id>

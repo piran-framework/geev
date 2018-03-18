@@ -17,7 +17,7 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.behsa.geev;
+package com.behsacorp.geev;
 
 import java.net.*;
 import java.util.function.Consumer;
