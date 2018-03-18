@@ -35,7 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Isa Hekmatizadeh
  */
 public class Geev {
-  static final int DEFAULT_DISCOVERY_PORT = 5172;
+  public static final int DEFAULT_DISCOVERY_PORT = 5172;
   private static final Charset ASCII = Charset.forName("US-ASCII");
   private static final byte[] PROTOCOL_NAME = "RBND".getBytes(ASCII);
   private static final byte PROTOCOL_VERSION = 0x01;
@@ -200,6 +200,8 @@ public class Geev {
         case LEAVE:
           handleLeave(node);
           break;
+        default:
+            break;
       }
     }
 

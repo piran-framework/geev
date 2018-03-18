@@ -45,27 +45,27 @@ public class GeevConfig {
     this.discoveryPort = builder.discoveryPort;
   }
 
-  Consumer<Node> getJoin() {
+  public Consumer<Node> getJoin() {
     return join;
   }
 
-  Consumer<Node> getLeave() {
+  public Consumer<Node> getLeave() {
     return leave;
   }
 
-  Node getMySelf() {
+  public Node getMySelf() {
     return mySelf;
   }
 
-  boolean isBroadcast() {
+  public boolean isBroadcast() {
     return broadcast;
   }
 
-  InetAddress getMulticastAddress() {
+  public InetAddress getMulticastAddress() {
     return multicastAddress;
   }
 
-  int getDiscoveryPort() {
+  public int getDiscoveryPort() {
     return discoveryPort;
   }
 
