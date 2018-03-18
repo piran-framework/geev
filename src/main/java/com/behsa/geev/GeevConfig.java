@@ -19,9 +19,7 @@
 
 package com.behsa.geev;
 
-import java.net.Inet4Address;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
+import java.net.*;
 import java.util.function.Consumer;
 
 /**
@@ -35,9 +33,8 @@ public class GeevConfig {
   private final Consumer<Node> leave;
   private final Node mySelf;
   private final boolean broadcast;
-  private final Inet4Address multicastAddress;
+  private final InetAddress multicastAddress;
   private final int discoveryPort;
-  private final SocketAddress target;
 
   private GeevConfig(Builder builder) {
     this.join = builder.onJoin;
@@ -46,10 +43,6 @@ public class GeevConfig {
     this.broadcast = builder.broadcast;
     this.multicastAddress = builder.multicastAddress;
     this.discoveryPort = builder.discoveryPort;
-    if (this.broadcast)
-      target = new InetSocketAddress("255.255.255.255", discoveryPort);
-    else
-      target = new InetSocketAddress(multicastAddress, discoveryPort);
   }
 
   Consumer<Node> getJoin() {
@@ -68,16 +61,12 @@ public class GeevConfig {
     return broadcast;
   }
 
-  Inet4Address getMulticastAddress() {
+  InetAddress getMulticastAddress() {
     return multicastAddress;
   }
 
   int getDiscoveryPort() {
     return discoveryPort;
-  }
-
-  SocketAddress getTarget() {
-    return target;
   }
 
   /**
@@ -90,7 +79,7 @@ public class GeevConfig {
     private Consumer<Node> onLeave;
     private Node mySelf;
     private boolean broadcast = true;
-    private Inet4Address multicastAddress;
+    private InetAddress multicastAddress;
     private int discoveryPort = Geev.DEFAULT_DISCOVERY_PORT;
 
     /**
@@ -143,7 +132,7 @@ public class GeevConfig {
      * @param multicastAddress multicast address to use
      * @return Builder object
      */
-    public Builder multicastAddress(Inet4Address multicastAddress) {
+    public Builder multicastAddress(InetAddress multicastAddress) {
       this.multicastAddress = multicastAddress;
       this.broadcast = false;
       return this;

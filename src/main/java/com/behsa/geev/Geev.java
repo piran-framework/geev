@@ -20,10 +20,7 @@
 package com.behsa.geev;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.net.StandardSocketOptions;
+import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.nio.charset.Charset;
@@ -112,17 +109,29 @@ public class Geev {
   private class GeevInternal implements Runnable {
     private final DatagramChannel channel;
     private final GeevConfig config;
+    private final SocketAddress target;
     private Map<String, List<Node>> nodes = new ConcurrentHashMap<>();
 
     private GeevInternal(GeevConfig config) throws IOException {
       this.config = config;
-      channel = DatagramChannel.open();
+      channel = DatagramChannel.open(StandardProtocolFamily.INET);
 
-      //broadcast first
-      channel.setOption(StandardSocketOptions.SO_BROADCAST, true);
+      if (config.isBroadcast())
+        channel.setOption(StandardSocketOptions.SO_BROADCAST, true);
+      else {
+        channel.setOption(StandardSocketOptions.IP_MULTICAST_IF,
+                NetworkInterface.getByInetAddress(config.getMySelf().getIp()));
+      }
       channel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
       channel.configureBlocking(true);
       channel.bind(new InetSocketAddress(config.getDiscoveryPort()));
+      if (config.isBroadcast()) { //broadcast
+        target = new InetSocketAddress("255.255.255.255", config.getDiscoveryPort());
+      } else { // multicast
+        channel.join(config.getMulticastAddress(),
+                NetworkInterface.getByInetAddress(config.getMySelf().getIp()));
+        target = new InetSocketAddress(config.getMulticastAddress(), config.getDiscoveryPort());
+      }
     }
 
     private void disconnect(Node node) {
@@ -166,7 +175,7 @@ public class Geev {
       buffer.putChar((char) config.getMySelf().getPort()); //port 2 byte
       buffer.put(myRole.getBytes(ASCII));
       buffer.flip();
-      channel.send(buffer, config.getTarget());
+      channel.send(buffer, target);
     }
 
     private void handleReceive() throws IOException {
@@ -213,9 +222,9 @@ public class Geev {
     }
 
     private void handleJoinResponse(Node node) {
-      List<Node> nodesWithSameRole = this.nodes.get(node.getRole());
       if (config.getMySelf().equals(node)) //messages from itself should be ignored
         return;
+      List<Node> nodesWithSameRole = this.nodes.get(node.getRole());
       if (nodesWithSameRole == null) {
         nodesWithSameRole = new ArrayList<>();
         nodesWithSameRole.add(node);
@@ -228,6 +237,8 @@ public class Geev {
     }
 
     private void handleJoin(Node node) throws IOException {
+      if (config.getMySelf().equals(node)) //messages from itself should be ignored
+        return;
       handleJoinResponse(node);
       send(JOIN_RESPONSE);
     }
