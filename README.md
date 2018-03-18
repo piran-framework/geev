@@ -1,4 +1,5 @@
 # Geev
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ee76ec9d9e6944dcb9c77bf2de320d2d)](https://app.codacy.com/app/esahekmat/geev?utm_source=github.com&utm_medium=referral&utm_content=behsa-oss/geev&utm_campaign=badger)
 [![Travis IC](https://travis-ci.org/behsa-oss/geev.svg?branch=master)](https://travis-ci.org/behsa-oss/geev)
 [![codecov](https://codecov.io/gh/behsa-oss/geev/branch/master/graph/badge.svg)](https://codecov.io/gh/behsa-oss/geev)
 
