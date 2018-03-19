@@ -12,6 +12,25 @@ Geev is a mythical hero of the Iranian historical and mythical epic book, Shahna
 and searched several years to find Kay-khosrow the king of the Iran. He finally found the king and
 brought him and his mother back to Iran.
 
+## Usage
+First add maven dependency like this:
+```
+<dependency>
+        <groupId>com.behsa</groupId>
+        <artifactId>geev</artifactId>
+        <version>0.1-RELEASE</version>
+</dependency>
+```
+Then you can create a new geev object like this:
+```
+Geev geev = new Geev(new GeevConfig.Builder()
+            .onJoin((node) -> /* do what you want when a new node found*/)
+            .onLeave((node) -> /* also do what you want when a node left*/)
+            .setMySelf(new Node("YourNodeRole",yourInetAddress,yourPort))
+            .build()
+```
+It start a background thread to do discovery.
+
 ## Build
 You need jdk >= 1.8 and maven to build geev. simply use maven to build and install the artifact 
 into your local repository by the command:
@@ -23,7 +42,7 @@ Then you can add geev into your project POM file like this:
 <dependency>
         <groupId>com.behsa</groupId>
         <artifactId>geev</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.2-SNAPSHOT</version>
 </dependency>
 ```
 
