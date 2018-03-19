@@ -19,7 +19,7 @@
 
 package com.behsacorp.geev;
 
-import java.net.*;
+import java.net.InetAddress;
 import java.util.function.Consumer;
 
 /**
@@ -75,8 +75,10 @@ public class GeevConfig {
    * {@link GeevConfig} instance created.
    */
   public static class Builder {
-    private Consumer<Node> onJoin;
-    private Consumer<Node> onLeave;
+    private Consumer<Node> onJoin = (node) -> {
+    };
+    private Consumer<Node> onLeave = (node) -> {
+    };
     private Node mySelf;
     private boolean broadcast = true;
     private InetAddress multicastAddress;
