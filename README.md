@@ -1,7 +1,9 @@
 # Geev
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.behsacorp/geev/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.behsacorp/geev)
 [![Travis IC](https://travis-ci.org/behsa-oss/geev.svg?branch=master)](https://travis-ci.org/behsa-oss/geev)
 [![codecov](https://codecov.io/gh/behsa-oss/geev/branch/master/graph/badge.svg)](https://codecov.io/gh/behsa-oss/geev)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f436671f55984fb79910aeff17a571d6)](https://www.codacy.com/app/esahekmat/geev?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=behsa-oss/geev&amp;utm_campaign=Badge_Grade)
+[![Javadocs](http://javadoc.io/badge/com.behsacorp/geev.svg)](http://javadoc.io/doc/com.behsacorp/geev)
 
 Geev is an implementation of the Behsa Role-Based Node Discovery (BEHSA/RBND) version 1 
 specification. Geev is a simple library you can add to your application and use it to discover 
