@@ -6,7 +6,7 @@
 
   <groupId>com.behsacorp</groupId>
   <artifactId>geev</artifactId>
-  <version>0.1-RELEASE</version>
+  <version>0.2-SNAPSHOT</version>
   <name>Geev</name>
   <description>implementation of the BEHSA/RBND specification</description>
   <url>http://github.com/behsa-oss/geev/</url>
@@ -48,6 +48,11 @@
     </repository>
   </distributionManagement>
   <dependencies>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging-api</artifactId>
+      <version>1.1</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

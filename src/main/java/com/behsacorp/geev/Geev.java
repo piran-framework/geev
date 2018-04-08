@@ -26,6 +26,8 @@ import java.nio.channels.DatagramChannel;
 import java.nio.charset.Charset;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Starting point for discovery, every application using Geev should create a new instance of
@@ -35,6 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Isa Hekmatizadeh
  */
 public class Geev {
+  public static final Logger log = Logger.getLogger(Geev.class.getName());
   public static final int DEFAULT_DISCOVERY_PORT = 5172;
   private static final Charset ASCII = Charset.forName("US-ASCII");
   private static final byte[] PROTOCOL_NAME = "RBND".getBytes(ASCII);
@@ -57,6 +60,19 @@ public class Geev {
     internalInstance = new GeevInternal(config);
     internalThread = new Thread(internalInstance);
     internalThread.start();
+    log.info("geev started");
+  }
+
+  /**
+   * start a geev instance and return an object of this class representing the instance
+   * same as calling <code>new Ganjex(config)</code>
+   *
+   * @param config Geev configuration
+   * @return object of this class representing the instance of geev
+   * @throws IOException if it can't open a datagram socket or bind it.
+   */
+  public static Geev run(GeevConfig config) throws IOException {
+    return new Geev(config);
   }
 
   /**
@@ -116,11 +132,14 @@ public class Geev {
       this.config = config;
       channel = DatagramChannel.open(StandardProtocolFamily.INET);
 
-      if (config.isBroadcast())
+      if (config.isBroadcast()) {
         channel.setOption(StandardSocketOptions.SO_BROADCAST, true);
-      else {
+        log.info("geev using broadcast strategy");
+      } else {
+        log.info("geev using multicast strategy");
         channel.setOption(StandardSocketOptions.IP_MULTICAST_IF,
-                NetworkInterface.getByInetAddress(config.getMySelf().getIp()));
+                NetworkInterface.getByInetAddress(Inet4Address.getByName(config.getMySelf().getIp
+                        ())));
       }
       channel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
       channel.configureBlocking(true);
@@ -128,8 +147,9 @@ public class Geev {
       if (config.isBroadcast()) { //broadcast
         target = new InetSocketAddress("255.255.255.255", config.getDiscoveryPort());
       } else { // multicast
-        channel.join(config.getMulticastAddress(),
-                NetworkInterface.getByInetAddress(config.getMySelf().getIp()));
+        channel.join(Inet4Address.getByName(config.getMulticastAddress()),
+                NetworkInterface.getByInetAddress(
+                        Inet4Address.getByName(config.getMySelf().getIp())));
         target = new InetSocketAddress(config.getMulticastAddress(), config.getDiscoveryPort());
       }
     }
@@ -137,6 +157,8 @@ public class Geev {
     private void disconnect(Node node) {
       Optional<List<Node>> containingList = nodes.values().stream().filter((l) -> l.contains(node)).findFirst();
       containingList.ifPresent(nodes -> nodes.remove(node));
+      if (log.isLoggable(Level.INFO))
+        log.info("node " + node + " disconnected");
     }
 
     @Override
@@ -201,7 +223,7 @@ public class Geev {
           handleLeave(node);
           break;
         default:
-            break;
+          break;
       }
     }
 
@@ -211,7 +233,7 @@ public class Geev {
       byte[] roleBytes = new byte[length];
       buffer.get(roleBytes, 0, length);
       String role = new String(roleBytes, ASCII);
-      InetAddress ip = ((InetSocketAddress) sender).getAddress();
+      String ip = ((InetSocketAddress) sender).getAddress().getHostAddress();
       return new Node(role, ip, port);
     }
 

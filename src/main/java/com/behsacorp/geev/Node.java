@@ -19,7 +19,6 @@
 
 package com.behsacorp.geev;
 
-import java.net.InetAddress;
 import java.util.Objects;
 
 /**
@@ -30,7 +29,7 @@ import java.util.Objects;
  */
 public class Node {
   private final String role;
-  private final InetAddress ip;
+  private final String ip;
   private final int port;
 
   /**
@@ -40,7 +39,7 @@ public class Node {
    * @param ip   IP address of the node
    * @param port port number of the node
    */
-  public Node(String role, InetAddress ip, int port) {
+  public Node(String role, String ip, int port) {
     this.role = role;
     this.ip = ip;
     this.port = port;
@@ -50,7 +49,7 @@ public class Node {
     return role;
   }
 
-  public InetAddress getIp() {
+  public String getIp() {
     return ip;
   }
 

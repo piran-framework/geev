@@ -54,7 +54,7 @@ public class BroadcastTest {
     }
     Assert.assertNotNull(defaultInetAddress);
     System.out.println(defaultInetAddress);
-    Node node1 = new Node("WORKER", defaultInetAddress, 1000);
+    Node node1 = new Node("WORKER", defaultInetAddress.getHostAddress(), 1000);
     Geev geev1 = new Geev(new GeevConfig.Builder()
             .onJoin((node) -> System.out.printf("geev1: %s joined\n", node))
             .onLeave((node) -> System.out.printf("geev1: %s leaved\n", node))
@@ -62,7 +62,7 @@ public class BroadcastTest {
             .build()
     );
     System.out.println("node1 started");
-    Node node2 = new Node("WORKER", defaultInetAddress, 1001);
+    Node node2 = new Node("WORKER", defaultInetAddress.getHostAddress(), 1001);
     Geev geev2 = new Geev(new GeevConfig.Builder()
             .onJoin((node) -> System.out.printf("geev2: %s joined\n", node))
             .onLeave((node) -> System.out.printf("geev2: %s leaved\n", node))
@@ -71,7 +71,7 @@ public class BroadcastTest {
     );
     System.out.println("node2 started");
 
-    Node node3 = new Node("LOG-AGGREGATOR", defaultInetAddress, 1002);
+    Node node3 = new Node("LOG-AGGREGATOR", defaultInetAddress.getHostAddress(), 1002);
     Geev geev3 = new Geev(new GeevConfig.Builder()
             .onJoin((node) -> System.out.printf("geev3: %s joined\n", node))
             .onLeave((node) -> System.out.printf("geev3: %s leaved\n", node))

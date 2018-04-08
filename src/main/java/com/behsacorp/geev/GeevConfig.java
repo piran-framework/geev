@@ -19,7 +19,6 @@
 
 package com.behsacorp.geev;
 
-import java.net.InetAddress;
 import java.util.function.Consumer;
 
 /**
@@ -33,7 +32,7 @@ public class GeevConfig {
   private final Consumer<Node> leave;
   private final Node mySelf;
   private final boolean broadcast;
-  private final InetAddress multicastAddress;
+  private final String multicastAddress;
   private final int discoveryPort;
 
   private GeevConfig(Builder builder) {
@@ -61,7 +60,7 @@ public class GeevConfig {
     return broadcast;
   }
 
-  public InetAddress getMulticastAddress() {
+  public String getMulticastAddress() {
     return multicastAddress;
   }
 
@@ -81,7 +80,7 @@ public class GeevConfig {
     };
     private Node mySelf;
     private boolean broadcast = true;
-    private InetAddress multicastAddress;
+    private String multicastAddress;
     private int discoveryPort = Geev.DEFAULT_DISCOVERY_PORT;
 
     /**
@@ -127,6 +126,15 @@ public class GeevConfig {
       this.multicastAddress = null;
       return this;
     }
+    /**
+     * Indicate that geev should use broadcast strategy or not
+     *
+     * @return Builder object
+     */
+    public Builder useBroadcast(boolean useBroadcast) {
+      this.broadcast = useBroadcast;
+      return this;
+    }
 
     /**
      * Indicate that geev should use multicast strategy and use the multicast address provided
@@ -134,7 +142,7 @@ public class GeevConfig {
      * @param multicastAddress multicast address to use
      * @return Builder object
      */
-    public Builder multicastAddress(InetAddress multicastAddress) {
+    public Builder multicastAddress(String multicastAddress) {
       this.multicastAddress = multicastAddress;
       this.broadcast = false;
       return this;
