@@ -63,7 +63,7 @@ public class Node {
     if (o == null || getClass() != o.getClass()) return false;
     Node node = (Node) o;
     return port == node.port &&
-            Objects.equals(ip, node.ip);
+        Objects.equals(ip, node.ip);
   }
 
   @Override

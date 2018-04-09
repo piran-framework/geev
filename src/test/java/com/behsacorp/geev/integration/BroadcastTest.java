@@ -56,27 +56,27 @@ public class BroadcastTest {
     System.out.println(defaultInetAddress);
     Node node1 = new Node("WORKER", defaultInetAddress.getHostAddress(), 1000);
     Geev geev1 = new Geev(new GeevConfig.Builder()
-            .onJoin((node) -> System.out.printf("geev1: %s joined\n", node))
-            .onLeave((node) -> System.out.printf("geev1: %s leaved\n", node))
-            .setMySelf(node1)
-            .build()
+        .onJoin((node) -> System.out.printf("geev1: %s joined\n", node))
+        .onLeave((node) -> System.out.printf("geev1: %s leaved\n", node))
+        .setMySelf(node1)
+        .build()
     );
     System.out.println("node1 started");
     Node node2 = new Node("WORKER", defaultInetAddress.getHostAddress(), 1001);
     Geev geev2 = new Geev(new GeevConfig.Builder()
-            .onJoin((node) -> System.out.printf("geev2: %s joined\n", node))
-            .onLeave((node) -> System.out.printf("geev2: %s leaved\n", node))
-            .setMySelf(node2)
-            .build()
+        .onJoin((node) -> System.out.printf("geev2: %s joined\n", node))
+        .onLeave((node) -> System.out.printf("geev2: %s leaved\n", node))
+        .setMySelf(node2)
+        .build()
     );
     System.out.println("node2 started");
 
     Node node3 = new Node("LOG-AGGREGATOR", defaultInetAddress.getHostAddress(), 1002);
     Geev geev3 = new Geev(new GeevConfig.Builder()
-            .onJoin((node) -> System.out.printf("geev3: %s joined\n", node))
-            .onLeave((node) -> System.out.printf("geev3: %s leaved\n", node))
-            .setMySelf(node3)
-            .build()
+        .onJoin((node) -> System.out.printf("geev3: %s joined\n", node))
+        .onLeave((node) -> System.out.printf("geev3: %s leaved\n", node))
+        .setMySelf(node3)
+        .build()
     );
     System.out.println("node3 started");
     Thread.sleep(1000);

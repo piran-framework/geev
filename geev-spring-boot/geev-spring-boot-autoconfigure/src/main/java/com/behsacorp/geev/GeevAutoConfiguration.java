@@ -50,29 +50,29 @@ public class GeevAutoConfiguration {
   @ConditionalOnMissingBean
   public Geev geev(ApplicationContext applicationContext, GeevProperties geevProperties) {
     Map<String, Object> hookMap =
-            applicationContext.getBeansWithAnnotation(GeevHook.class);
+        applicationContext.getBeansWithAnnotation(GeevHook.class);
     List<Consumer<Node>> joinList = new ArrayList<>();
     List<Consumer<Node>> leftList = new ArrayList<>();
     hookMap.values().forEach(h -> {
       joinList.addAll(Stream.of(h.getClass().getMethods())
-              .filter(m -> m.isAnnotationPresent(NodeJoined.class))
-              .map(m -> this.methodToConsumer(m,h)).collect(Collectors.toList()));
+          .filter(m -> m.isAnnotationPresent(NodeJoined.class))
+          .map(m -> this.methodToConsumer(m, h)).collect(Collectors.toList()));
       leftList.addAll(Stream.of(h.getClass().getMethods())
-              .filter(m -> m.isAnnotationPresent(NodeLeft.class))
-              .map(m ->this.methodToConsumer(m,h)).collect(Collectors.toList()));
+          .filter(m -> m.isAnnotationPresent(NodeLeft.class))
+          .map(m -> this.methodToConsumer(m, h)).collect(Collectors.toList()));
     });
     Geev geev;
     try {
       geev = Geev.run(new GeevConfig.Builder()
-              .setMySelf(new Node(geevProperties.getMyselfRole(),
-                      geevProperties.getMyselfIp(),
-                      geevProperties.getMyselfPort()))
-              .multicastAddress(geevProperties.getMulticastAddress())
-              .useBroadcast(geevProperties.isBroadcast())
-              .discoveryPort(geevProperties.getDiscoveryPort())
-              .onJoin(node -> joinList.forEach(c -> c.accept(node)))
-              .onLeave(node -> leftList.forEach(c -> c.accept(node)))
-              .build()
+          .setMySelf(new Node(geevProperties.getMyselfRole(),
+              geevProperties.getMyselfIp(),
+              geevProperties.getMyselfPort()))
+          .multicastAddress(geevProperties.getMulticastAddress())
+          .useBroadcast(geevProperties.isBroadcast())
+          .discoveryPort(geevProperties.getDiscoveryPort())
+          .onJoin(node -> joinList.forEach(c -> c.accept(node)))
+          .onLeave(node -> leftList.forEach(c -> c.accept(node)))
+          .build()
       );
     } catch (IOException e) {
       log.warning(e.getMessage());

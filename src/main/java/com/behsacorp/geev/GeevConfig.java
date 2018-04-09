@@ -126,6 +126,7 @@ public class GeevConfig {
       this.multicastAddress = null;
       return this;
     }
+
     /**
      * Indicate that geev should use broadcast strategy or not
      *
