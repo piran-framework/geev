@@ -26,7 +26,6 @@ import java.nio.channels.DatagramChannel;
 import java.nio.charset.Charset;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -60,7 +59,7 @@ public class Geev {
     internalInstance = new GeevInternal(config);
     internalThread = new Thread(internalInstance);
     internalThread.start();
-    log.info("geev started");
+    log.finer("geev started");
   }
 
   /**
@@ -93,7 +92,9 @@ public class Geev {
    * @return all nodes discovered with the role specified
    */
   public List<Node> allNodes(String role) {
-    return internalInstance.nodes.get(role);
+    return internalInstance.nodes.containsKey(role) ?
+        internalInstance.nodes.get(role) :
+        Collections.emptyList();
   }
 
   /**
@@ -112,6 +113,7 @@ public class Geev {
     try {
       internalInstance.send(LEAVE);
     } catch (IOException e) {
+
       e.printStackTrace();
     }
     internalThread.interrupt();
@@ -134,12 +136,12 @@ public class Geev {
 
       if (config.isBroadcast()) {
         channel.setOption(StandardSocketOptions.SO_BROADCAST, true);
-        log.info("geev using broadcast strategy");
+        log.finer("geev using broadcast strategy");
       } else {
-        log.info("geev using multicast strategy");
+        log.finer("geev using multicast strategy");
         channel.setOption(StandardSocketOptions.IP_MULTICAST_IF,
-                NetworkInterface.getByInetAddress(Inet4Address.getByName(config.getMySelf().getIp
-                        ())));
+            NetworkInterface.getByInetAddress(Inet4Address.getByName(config.getMySelf().getIp()))
+        );
       }
       channel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
       channel.configureBlocking(true);
@@ -148,17 +150,17 @@ public class Geev {
         target = new InetSocketAddress("255.255.255.255", config.getDiscoveryPort());
       } else { // multicast
         channel.join(Inet4Address.getByName(config.getMulticastAddress()),
-                NetworkInterface.getByInetAddress(
-                        Inet4Address.getByName(config.getMySelf().getIp())));
+            NetworkInterface.getByInetAddress(
+                Inet4Address.getByName(config.getMySelf().getIp())));
         target = new InetSocketAddress(config.getMulticastAddress(), config.getDiscoveryPort());
       }
     }
 
     private void disconnect(Node node) {
-      Optional<List<Node>> containingList = nodes.values().stream().filter((l) -> l.contains(node)).findFirst();
+      Optional<List<Node>> containingList = nodes.values().stream()
+          .filter(l -> l.contains(node)).findFirst();
       containingList.ifPresent(nodes -> nodes.remove(node));
-      if (log.isLoggable(Level.INFO))
-        log.info("node " + node + " disconnected");
+      log.fine("node " + node + " disconnected");
     }
 
     @Override
@@ -169,15 +171,17 @@ public class Geev {
           send(JOIN);
           break;
         } catch (IOException e) {
-          e.printStackTrace();
+          log.info("could not send JOIN message. retrying...");
           retryCountLeft--;
           try {
             Thread.sleep(10);
           } catch (InterruptedException e1) {
-            e1.printStackTrace();
+            log.warning("geev interrupted before send JOIN");
           }
         }
       }
+      if (retryCountLeft <= 0)
+        log.severe("could not send JOIN message after 3 retry. decide to not send it");
       while (!Thread.currentThread().isInterrupted()) {
         try {
           handleReceive();
@@ -208,7 +212,7 @@ public class Geev {
       buffer.flip();
       buffer.get(protocolName);
       if (!Arrays.equals(PROTOCOL_NAME, protocolName) ||
-              buffer.get() != PROTOCOL_VERSION)
+          buffer.get() != PROTOCOL_VERSION)
         return; //ignore the unknown messages
       byte messageType = buffer.get();
       Node node = createNodeFromMsg(sender, buffer);

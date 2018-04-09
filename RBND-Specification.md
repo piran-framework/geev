@@ -57,7 +57,7 @@ port and the rest of the message is the Role string representation of the node w
 message.
 
 when a node receive a JOIN message, it should store IP address of the sender as well as port and 
-role and then, it SHOULD broadcast or multicast a JOIN response message.
+role, then it SHOULD broadcast or multicast a JOIN response message.
 
 ## JOIN Response
 JOIN response message is same as JOIN message except the header which should be 
