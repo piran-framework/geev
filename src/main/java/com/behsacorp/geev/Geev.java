@@ -22,6 +22,7 @@ package com.behsacorp.geev;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
+import java.nio.channels.ClosedByInterruptException;
 import java.nio.channels.DatagramChannel;
 import java.nio.charset.Charset;
 import java.util.*;
@@ -185,8 +186,11 @@ public class Geev {
       while (!Thread.currentThread().isInterrupted()) {
         try {
           handleReceive();
+        } catch (ClosedByInterruptException e) {
+          log.fine("geev terminated");
         } catch (IOException e) {
-          e.printStackTrace();
+          log.severe("IOException occurred in geev while receiving: " + e.getMessage());
+          log.throwing("GeevInternal", "run", e);
         }
       }
     }
