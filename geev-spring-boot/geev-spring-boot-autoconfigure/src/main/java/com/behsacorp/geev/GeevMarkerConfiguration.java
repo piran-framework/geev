@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Bean;
  */
 public class GeevMarkerConfiguration {
   @Bean
-  public Marker enableGanjexMarker() {
+  public Marker enableGeevMarker() {
     return new Marker();
   }
 
