@@ -78,7 +78,7 @@ public class GeevAutoConfiguration {
       log.warning(e.getMessage());
       return null;
     }
-
+    Runtime.getRuntime().addShutdownHook(new Thread(geev::destroy));
     log.info("geev bootstrap finished");
     return geev;
   }
