@@ -29,6 +29,7 @@
 
     <packaging>jar</packaging>
     <name>Geev Spring Boot AutoConfiguration</name>
+    <description>Geev Spring boot AutoConfiguration</description>
     <url>http://github.com/behsa-oss/geev/</url>
     <organization>
         <name>Behsa Co.</name>
@@ -158,7 +159,7 @@
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
-                                <phase>pverify</phase>
+                                <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
