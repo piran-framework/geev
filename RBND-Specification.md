@@ -3,7 +3,7 @@
 * Name: BEHSA/RBND
 * Version: 1
 * Full Name: Behsa Role-Based Node Discovery Protocol
-* Status: draft
+* Status: stable
 * Editor: Isa Hekmatizadeh i.hekmatizadeh@behsacorp.com
 
 The Role-Based Node Discovery protocol(BEHSA/RBND) governs how a group of node with different 

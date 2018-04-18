@@ -18,9 +18,9 @@ brought him and his mother back to Iran.
 First add maven dependency like this:
 ```
 <dependency>
-        <groupId>com.behsa</groupId>
+        <groupId>com.behsacorp</groupId>
         <artifactId>geev</artifactId>
-        <version>0.1-RELEASE</version>
+        <version>0.2-RELEASE</version>
 </dependency>
 ```
 Then you can create a new geev object like this:
@@ -33,6 +33,34 @@ Geev geev = new Geev(new GeevConfig.Builder()
 ```
 It start a background thread to do discovery.
 
+## Spring-boot starter
+A Spring-boot-starter has been particularly designed for Geev which could be mounted on 
+Spring-boot applications. By adding @EnableGeevContainer class-level annotation on the 
+Configuration class, Geev starts and scans all the beans with @GeevHook annotation. Note 
+that, if a class is marked with @GeevHook, that class would be qualified to be a Spring 
+component bean as well, so there would be no need to add @Component or @Service by doing so.
+Every GeevHook class can contain methods annotated by @NodeJoined or @NodeLeft. These method 
+invoked when a new node joined or a existing node left.
+To use geev starter add this dependency to your project:
+```
+<dependency>
+        <groupId>com.behsacorp</groupId>
+        <artifactId>geev-spring-boot-starter</artifactId>
+        <version>0.2-RELEASE</version>
+</dependency>
+```
+###Spring-Boot properties
+To add geev-starter to a spring-boot application, add three properties besides spring-boot 
+properties:
+geev.broadcast #to indicate use broadcast strategy. default true
+geev.multicast-address #indicate the multicast address used in multicast strategy
+geev.discovery-port  #which port geev use default 5172
+geev.myself-role #role of the node
+geev.myself-ip #ip of the node
+geev.myself-port #port of the node
+
+They are the same as GeevConfig fields.
+
 ## Build
 You need jdk >= 1.8 and maven to build geev. simply use maven to build and install the artifact 
 into your local repository by the command:
@@ -42,15 +70,16 @@ mvn install
 Then you can add geev into your project POM file like this:
 ```
 <dependency>
-        <groupId>com.behsa</groupId>
+        <groupId>com.behsacorp</groupId>
         <artifactId>geev</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.2-RELEASE</version>
 </dependency>
 ```
 
 ## Contribution
 Any contributions are welcomed. Also if you find any problem using geev you can create issue in 
-github issue tracker of the project.
+github issue tracker of the project. There is just one limitation for the contribution and it's 
+respect the code style located in code-style.xml
 
 ## License
 Copyright (c) 2018 Behsa Corporation.

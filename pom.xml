@@ -6,7 +6,7 @@
 
     <groupId>com.behsacorp</groupId>
     <artifactId>geev</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2-RELEASE</version>
     <name>Geev</name>
     <description>implementation of the BEHSA/RBND specification</description>
     <url>http://github.com/behsa-oss/geev/</url>
