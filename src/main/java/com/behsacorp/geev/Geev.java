@@ -59,6 +59,7 @@ public class Geev {
   public Geev(GeevConfig config) throws IOException {
     internalInstance = new GeevInternal(config);
     internalThread = new Thread(internalInstance);
+    internalThread.setName("geev-internal");
     internalThread.start();
     log.finer("geev started");
   }
