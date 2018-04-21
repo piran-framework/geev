@@ -25,7 +25,7 @@
 
     <groupId>com.behsacorp</groupId>
     <artifactId>geev-spring-boot-starter</artifactId>
-    <version>0.2-RELEASE</version>
+    <version>0.3-SNAPSHOT</version>
     <name>Geev Starter</name>
     <description>Geev Spring Boot Starter</description>
     <url>http://github.com/behsa-oss/geev/</url>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.behsacorp</groupId>
             <artifactId>geev-spring-boot-autoconfigure</artifactId>
-            <version>0.2-RELEASE</version>
+            <version>0.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

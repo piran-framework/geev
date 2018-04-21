@@ -25,7 +25,7 @@
 
     <groupId>com.behsacorp</groupId>
     <artifactId>geev-spring-boot-autoconfigure</artifactId>
-    <version>0.2-RELEASE</version>
+    <version>0.3-SNAPTHOT</version>
 
     <packaging>jar</packaging>
     <name>Geev Spring Boot AutoConfiguration</name>
@@ -92,7 +92,7 @@
         <dependency>
             <groupId>com.behsacorp</groupId>
             <artifactId>geev</artifactId>
-            <version>0.2-RELEASE</version>
+            <version>0.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
