@@ -109,6 +109,15 @@ public class Geev {
   }
 
   /**
+   * Notify geev a new node discovered by other manners, like receiving heartbeat
+   *
+   * @param node discovered node
+   */
+  public void nodeConnected(Node node) {
+    internalInstance.handleJoinResponse(node);
+  }
+
+  /**
    * destroy the geev instance cleanly
    */
   public void destroy() {
