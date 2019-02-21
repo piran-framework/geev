@@ -1,4 +1,4 @@
-<code_scheme name="behsa-oss-code-style">
+<code_scheme name="piran-framework-code-style">
     <option name="RIGHT_MARGIN" value="100"/>
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="true"/>
     <codeStyleSettings language="JAVA">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~  Copyright (c) 2018 Behsa Corporation.
+  ~  Copyright (c) 2018 Isa Hekmatizadeh.
   ~
   ~  This file is part of Geev.
   ~
@@ -23,18 +23,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.behsacorp</groupId>
+    <groupId>com.piran-framework</groupId>
     <artifactId>geev-spring-boot-autoconfigure</artifactId>
     <version>0.3-SNAPSHOT</version>
 
     <packaging>jar</packaging>
     <name>Geev Spring Boot AutoConfiguration</name>
     <description>Geev Spring boot AutoConfiguration</description>
-    <url>http://github.com/behsa-oss/geev/</url>
-    <organization>
-        <name>Behsa Co.</name>
-        <url>http://www.behsacorp.com</url>
-    </organization>
+    <url>http://github.com/piran-framework/geev/</url>
     <licenses>
         <license>
             <name>GNU Lesser General Public License</name>
@@ -46,18 +42,16 @@
         <developer>
             <id>hekmatof</id>
             <name>Esa Hekmatizadeh</name>
-            <email>i.hekmatizadeh at behsacorp.com</email>
-            <organization>Behsa Co.</organization>
-            <organizationUrl>http://www.behsacorp.com</organizationUrl>
+            <email>esa.hekmat at gmail.com</email>
             <roles>
                 <role>Project lead</role>
             </roles>
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/behsa-oss/geev.git</connection>
-        <developerConnection>scm:git:ssh://github.com:behsa-oss/geev.git</developerConnection>
-        <url>http://github.com/behsa-oss/geev/tree/master</url>
+        <connection>scm:git:git://github.com/piran-framework/geev.git</connection>
+        <developerConnection>scm:git:ssh://github.com:piran-framework/geev.git</developerConnection>
+        <url>http://github.com/piran-framework/geev/tree/master</url>
     </scm>
     <distributionManagement>
         <snapshotRepository>
@@ -90,7 +84,7 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.behsacorp</groupId>
+            <groupId>com.piran-framework</groupId>
             <artifactId>geev</artifactId>
             <version>0.3-SNAPSHOT</version>
         </dependency>

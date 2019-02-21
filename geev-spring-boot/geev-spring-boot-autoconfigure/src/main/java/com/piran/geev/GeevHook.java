@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018 Behsa Corporation.
+ *  Copyright (c) 2018 Isa Hekmatizadeh.
  *
  *  This file is part of Geev.
  *
@@ -17,19 +17,18 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.behsacorp.geev;
+package com.piran.geev;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import java.lang.annotation.*;
 
 /**
  * @author Isa Hekmatizadeh
  */
-public class GeevMarkerConfiguration {
-  @Bean
-  public Marker enableGeevMarker() {
-    return new Marker();
-  }
-
-  class Marker {
-  }
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Component
+public @interface GeevHook {
 }

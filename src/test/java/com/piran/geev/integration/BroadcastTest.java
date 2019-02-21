@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018 Behsa Corporation.
+ *  Copyright (c) 2018 Isa Hekmatizadeh.
  *
  *  This file is part of Geev.
  *
@@ -17,11 +17,11 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.behsacorp.geev.integration;
+package com.piran.geev.integration;
 
-import com.behsacorp.geev.Geev;
-import com.behsacorp.geev.GeevConfig;
-import com.behsacorp.geev.Node;
+import com.piran.geev.Geev;
+import com.piran.geev.GeevConfig;
+import com.piran.geev.Node;
 import org.junit.Assert;
 import org.junit.Test;
 

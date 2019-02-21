@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018 Behsa Corporation.
+ *  Copyright (c) 2018 Isa Hekmatizadeh.
  *
  *  This file is part of Geev.
  *
@@ -17,7 +17,7 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.behsacorp.geev;
+package com.piran.geev;
 
 import java.util.function.Consumer;
 

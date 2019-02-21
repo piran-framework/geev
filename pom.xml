@@ -4,16 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.behsacorp</groupId>
+    <groupId>com.piran-framework</groupId>
     <artifactId>geev</artifactId>
     <version>0.3-SNAPSHOT</version>
     <name>Geev</name>
-    <description>implementation of the BEHSA/RBND specification</description>
-    <url>http://github.com/behsa-oss/geev/</url>
-    <organization>
-        <name>Behsa Co.</name>
-        <url>http://www.behsacorp.com</url>
-    </organization>
+    <description>implementation of the PIRAN/RBND specification</description>
+    <url>http://github.com/piran-framework/geev/</url>
     <licenses>
         <license>
             <name>GNU Lesser General Public License</name>
@@ -24,18 +20,16 @@
         <developer>
             <id>hekmatof</id>
             <name>Isa Hekmatizadeh</name>
-            <email>i.hekmatizadeh at behsacorp.com</email>
-            <organization>Behsa Co.</organization>
-            <organizationUrl>http://www.behsacorp.com</organizationUrl>
+            <email>esa.hekmat at gmail.com</email>
             <roles>
                 <role>Project lead</role>
             </roles>
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/behsa-oss/geev.git</connection>
-        <developerConnection>scm:git:ssh://github.com:behsa-oss/geev.git</developerConnection>
-        <url>http://github.com/behsa-oss/geev/tree/master</url>
+        <connection>scm:git:git://github.com/piran-framework/geev.git</connection>
+        <developerConnection>scm:git:ssh://github.com:piran-framework/geev.git</developerConnection>
+        <url>http://github.com/piran-framework/geev/tree/master</url>
     </scm>
     <distributionManagement>
         <snapshotRepository>

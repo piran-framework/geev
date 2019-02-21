@@ -1,16 +1,16 @@
-# BEHSA/RBND Role-Based Node Discovery Protocol 
+# PIRAN/RBND Role-Based Node Discovery Protocol 
 
-* Name: BEHSA/RBND
+* Name: PIRAN/RBND
 * Version: 1
-* Full Name: Behsa Role-Based Node Discovery Protocol
+* Full Name: Piran Role-Based Node Discovery Protocol
 * Status: stable
-* Editor: Isa Hekmatizadeh i.hekmatizadeh@behsacorp.com
+* Editor: Isa Hekmatizadeh esa.hekmat@gmail.com
 
-The Role-Based Node Discovery protocol(BEHSA/RBND) governs how a group of node with different 
+The Role-Based Node Discovery protocol(PIRAN/RBND) governs how a group of node with different 
 roles discover each other on a network.
 
 ## License
-Copyright (c) 2018 Behsa Corporation.
+Copyright (c) 2018 Isa Hekmatizadeh.
 
 This Specification is free software; you can redistribute it and/or modify it under the terms of 
 the GNU General Public License as published by the Free Software Foundation; either version 3 of 

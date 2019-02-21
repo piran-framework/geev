@@ -1,11 +1,11 @@
 # Geev
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.behsacorp/geev/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.behsacorp/geev)
-[![Travis IC](https://travis-ci.org/behsa-oss/geev.svg?branch=master)](https://travis-ci.org/behsa-oss/geev)
-[![codecov](https://codecov.io/gh/behsa-oss/geev/branch/master/graph/badge.svg)](https://codecov.io/gh/behsa-oss/geev)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f436671f55984fb79910aeff17a571d6)](https://www.codacy.com/app/esahekmat/geev?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=behsa-oss/geev&amp;utm_campaign=Badge_Grade)
-[![Javadocs](http://javadoc.io/badge/com.behsacorp/geev.svg)](http://javadoc.io/doc/com.behsacorp/geev)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.piran-framework/geev/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.piran-framework/geev)
+[![Travis IC](https://travis-ci.org/piran-framework/geev.svg?branch=master)](https://travis-ci.org/piran-framework/geev)
+[![codecov](https://codecov.io/gh/piran-framework/geev/branch/master/graph/badge.svg)](https://codecov.io/gh/piran-framework/geev)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f436671f55984fb79910aeff17a571d6)](https://www.codacy.com/app/esahekmat/geev?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=piran-framework/geev&amp;utm_campaign=Badge_Grade)
+[![Javadocs](http://javadoc.io/badge/com.piran-framework/geev.svg)](http://javadoc.io/doc/com.piran-framework/geev)
 
-Geev is an implementation of the Behsa Role-Based Node Discovery (BEHSA/RBND) version 1 
+Geev is an implementation of the Piran Role-Based Node Discovery (PIRAN/RBND) version 1 
 specification. Geev is a simple library you can add to your application and use it to discover 
 other nodes and their roles. To understand the protocol see [RBND-specification](RBND-Specification.md)
 
@@ -18,7 +18,7 @@ brought him and his mother back to Iran.
 First add maven dependency like this:
 ```
 <dependency>
-        <groupId>com.behsacorp</groupId>
+        <groupId>com.piran-framework</groupId>
         <artifactId>geev</artifactId>
         <version>0.2-RELEASE</version>
 </dependency>
@@ -44,7 +44,7 @@ invoked when a new node joined or a existing node left.
 To use geev starter add this dependency to your project:
 ```
 <dependency>
-        <groupId>com.behsacorp</groupId>
+        <groupId>com.piran-framework</groupId>
         <artifactId>geev-spring-boot-starter</artifactId>
         <version>0.2-RELEASE</version>
 </dependency>
@@ -70,7 +70,7 @@ mvn install
 Then you can add geev into your project POM file like this:
 ```
 <dependency>
-        <groupId>com.behsacorp</groupId>
+        <groupId>com.piran-framework</groupId>
         <artifactId>geev</artifactId>
         <version>0.2-RELEASE</version>
 </dependency>
@@ -82,7 +82,7 @@ github issue tracker of the project. There is just one limitation for the contri
 respect the code style located in code-style.xml
 
 ## License
-Copyright (c) 2018 Behsa Corporation.
+Copyright (c) 2018 Isa Hekmatizadeh.
 
 Geev is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser 
 General Public License as published by the Free Software Foundation, either version 3 of the 
