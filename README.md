@@ -20,7 +20,7 @@ First add maven dependency like this:
 <dependency>
         <groupId>com.piran-framework</groupId>
         <artifactId>geev</artifactId>
-        <version>0.2-RELEASE</version>
+        <version>0.3-RELEASE</version>
 </dependency>
 ```
 Then you can create a new geev object like this:
@@ -46,7 +46,7 @@ To use geev starter add this dependency to your project:
 <dependency>
         <groupId>com.piran-framework</groupId>
         <artifactId>geev-spring-boot-starter</artifactId>
-        <version>0.2-RELEASE</version>
+        <version>0.3-RELEASE</version>
 </dependency>
 ```
 ###Spring-Boot properties
@@ -72,7 +72,7 @@ Then you can add geev into your project POM file like this:
 <dependency>
         <groupId>com.piran-framework</groupId>
         <artifactId>geev</artifactId>
-        <version>0.2-RELEASE</version>
+        <version>0.3-RELEASE</version>
 </dependency>
 ```
 

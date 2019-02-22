@@ -25,7 +25,7 @@
 
     <groupId>com.piran-framework</groupId>
     <artifactId>geev-spring-boot-autoconfigure</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3-RELEASE</version>
 
     <packaging>jar</packaging>
     <name>Geev Spring Boot AutoConfiguration</name>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>com.piran-framework</groupId>
             <artifactId>geev</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.3-RELEASE</version>
         </dependency>
     </dependencies>
     <build>

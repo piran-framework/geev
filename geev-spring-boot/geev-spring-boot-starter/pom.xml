@@ -25,7 +25,7 @@
 
     <groupId>com.Isa Hekmatizadeh</groupId>
     <artifactId>geev-spring-boot-starter</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3-RELEASE</version>
     <name>Geev Starter</name>
     <description>Geev Spring Boot Starter</description>
     <url>http://github.com/piran-framework/geev/</url>
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>com.piran-framework</groupId>
             <artifactId>geev-spring-boot-autoconfigure</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.3-RELEASE</version>
         </dependency>
     </dependencies>
 

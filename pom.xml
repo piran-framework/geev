@@ -6,7 +6,7 @@
 
     <groupId>com.piran-framework</groupId>
     <artifactId>geev</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3-RELEASE</version>
     <name>Geev</name>
     <description>implementation of the PIRAN/RBND specification</description>
     <url>http://github.com/piran-framework/geev/</url>
