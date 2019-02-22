@@ -17,19 +17,15 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.piran.geev;
-
-import org.springframework.context.annotation.Import;
+package com.piranframework.geev;
 
 import java.lang.annotation.*;
 
 /**
  * @author Isa Hekmatizadeh
- * @since 1.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(GeevMarkerConfiguration.class)
-public @interface EnableGeevContainer {
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface NodeJoined {
 }

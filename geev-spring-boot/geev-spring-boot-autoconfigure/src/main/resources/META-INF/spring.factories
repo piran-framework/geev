@@ -1,4 +1,4 @@
 # Autoconfiguration
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.piran.geev.GeevAutoConfiguration
+com.piranframework.geev.GeevAutoConfiguration
 

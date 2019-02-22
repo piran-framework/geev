@@ -17,11 +17,11 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.piran.geev.integration;
+package com.piranframework.geev.integration;
 
-import com.piran.geev.Geev;
-import com.piran.geev.GeevConfig;
-import com.piran.geev.Node;
+import com.piranframework.geev.Geev;
+import com.piranframework.geev.GeevConfig;
+import com.piranframework.geev.Node;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,9 +34,9 @@ import java.util.Enumeration;
 /**
  * @author Isa Hekmatizadeh
  */
-public class BroadcastTest {
+public class MulticastTest {
   @Test
-  public void simpleBroadcastTest() throws IOException, InterruptedException {
+  public void simpleMulticastTest() throws IOException, InterruptedException {
     Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
     NetworkInterface nInt = null;
     while (networkInterfaces.hasMoreElements()) {
@@ -56,6 +56,7 @@ public class BroadcastTest {
     System.out.println(defaultInetAddress);
     Node node1 = new Node("WORKER", defaultInetAddress.getHostAddress(), 1000);
     Geev geev1 = new Geev(new GeevConfig.Builder()
+        .multicastAddress("239.0.0.1")
         .onJoin((node) -> System.out.printf("geev1: %s joined\n", node))
         .onLeave((node) -> System.out.printf("geev1: %s leaved\n", node))
         .setMySelf(node1)
@@ -64,6 +65,7 @@ public class BroadcastTest {
     System.out.println("node1 started");
     Node node2 = new Node("WORKER", defaultInetAddress.getHostAddress(), 1001);
     Geev geev2 = new Geev(new GeevConfig.Builder()
+        .multicastAddress("239.0.0.1")
         .onJoin((node) -> System.out.printf("geev2: %s joined\n", node))
         .onLeave((node) -> System.out.printf("geev2: %s leaved\n", node))
         .setMySelf(node2)
@@ -73,6 +75,7 @@ public class BroadcastTest {
 
     Node node3 = new Node("LOG-AGGREGATOR", defaultInetAddress.getHostAddress(), 1002);
     Geev geev3 = new Geev(new GeevConfig.Builder()
+        .multicastAddress("239.0.0.1")
         .onJoin((node) -> System.out.printf("geev3: %s joined\n", node))
         .onLeave((node) -> System.out.printf("geev3: %s leaved\n", node))
         .setMySelf(node3)

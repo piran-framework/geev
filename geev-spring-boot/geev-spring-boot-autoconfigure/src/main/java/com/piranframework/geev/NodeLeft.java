@@ -17,9 +17,7 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.piran.geev;
-
-import org.springframework.stereotype.Component;
+package com.piranframework.geev;
 
 import java.lang.annotation.*;
 
@@ -28,7 +26,6 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@Component
-public @interface GeevHook {
+@Target(ElementType.METHOD)
+public @interface NodeLeft {
 }

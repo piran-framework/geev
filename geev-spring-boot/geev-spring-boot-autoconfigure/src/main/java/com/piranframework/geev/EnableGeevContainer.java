@@ -17,19 +17,19 @@
  *  along with Geev.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.piran.geev;
+package com.piranframework.geev;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
 
 /**
  * @author Isa Hekmatizadeh
+ * @since 1.0
  */
-public class GeevMarkerConfiguration {
-  @Bean
-  public Marker enableGeevMarker() {
-    return new Marker();
-  }
-
-  class Marker {
-  }
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Import(GeevMarkerConfiguration.class)
+public @interface EnableGeevContainer {
 }
